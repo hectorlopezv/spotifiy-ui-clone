@@ -15,6 +15,7 @@ const Login: React.FC<LogoProps> = () => {
             />
             {/*sportifu logo */}
             {/*login with spotify button*/}
+            <a href="">Login with spotify</a>
         </div>
     );
 }
