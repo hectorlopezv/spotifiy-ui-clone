@@ -1,4 +1,5 @@
 import './Login.css';
+import {loginURL} from '../../lib/spotify';
 
 export interface LogoProps {
     
@@ -15,7 +16,7 @@ const Login: React.FC<LogoProps> = () => {
             />
             {/*sportifu logo */}
             {/*login with spotify button*/}
-            <a href="">Login with spotify</a>
+            <a href={loginURL}>Login with spotify</a>
         </div>
     );
 }
