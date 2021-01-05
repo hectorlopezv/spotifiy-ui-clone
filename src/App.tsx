@@ -14,10 +14,11 @@ export interface AppProps {
 const spotify = new SpotifyWebApi();
 
 const App: React.FC<AppProps> = () => {
-  const [token, settoken] = useState('');
   const dispatch = useDispatch();
   const set_user = (user: any) => dispatch(setUser(user));
   const set_token = (token: any) => dispatch(setToken(token));
+  const token = useSelector((stateCurrent: any) => stateCurrent.App.token);
+  
   useEffect(() => {
       const _token: string = parsed_token().access_token as string;
       window.location.hash = "";//clean hash
