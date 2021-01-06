@@ -14,3 +14,10 @@ export const setToken = (token: any) =>{
         token: _.cloneDeep(token)
     }
 }
+
+export const setPlaylists = (playlists: any) =>{
+    return {
+        type: actionTypes.SET_PLAYLISTS, 
+        playlists: _.cloneDeep(playlists)
+    }
+}

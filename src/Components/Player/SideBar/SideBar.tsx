@@ -4,12 +4,15 @@ import SideBarOptions from './SideBarOptions/SideBarOptions';
 import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
+import { useSelector } from 'react-redux';
 
 export interface SideBarProps {
     
 }
  
 const SideBar: React.FC<SideBarProps> = () => {
+    const playLists = useSelector((stateCurrent: any)=> stateCurrent.App.playlists);
+    
     return (  
         <div className="sidebar">
             <img
@@ -23,7 +26,9 @@ const SideBar: React.FC<SideBarProps> = () => {
             <br/>
             <strong className="sidebar__title">PLAYLISTS</strong>
             <hr />
-
+            {playLists.map((playlist: any) => {
+                return <SideBarOptions key={playlist.name} title={playlist.name} />
+            })}
         </div>
     );
 }

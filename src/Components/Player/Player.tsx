@@ -15,10 +15,7 @@ const Player: React.FC<PlayerProps> = ({spotify}) => {
             <div className="player__body">
                 <SideBar />
                 <Body />
-                {/*sidebar*/}
-                {/*Body*/}
             </div>
-            {/*Footer*/}
             <Footer />
         </div>
     );

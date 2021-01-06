@@ -23,6 +23,13 @@ const AppReducer = (state = initialState, action: any) => {
         }
     }
 
+    if(action.type === actionTypes.SET_PLAYLISTS){
+        return {
+            ...state,
+            playlists: action.playlists.items
+        }
+    }
+
     return  state;
 }
 
