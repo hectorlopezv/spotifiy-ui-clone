@@ -7,6 +7,9 @@ const initialState = {
     discover_weekly: null,
     playing: false,
     item: null,
+    repeat: null,
+    volume: 0,
+    shuffle: null,
     token: null,
 }
 
@@ -57,6 +60,28 @@ const AppReducer = (state = initialState, action: any) => {
         return {
             ...state,
             item: action.item
+        }
+    }
+
+    
+    if(action.type === actionTypes.SET_SHUFFLE){
+        return {
+            ...state,
+            shuffle: action.shuffle
+        }
+    }
+
+    if(action.type === actionTypes.SET_REPEAT){
+        return {
+            ...state,
+            repeat: action.repeat
+        }
+    }
+
+    if(action.type === actionTypes.SET_VOLUME){
+        return {
+            ...state,
+            volume: action.volume
         }
     }
 

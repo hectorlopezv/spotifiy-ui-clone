@@ -49,3 +49,24 @@ export const setItem = (item: any) => {
         item: _.cloneDeep(item)
     }
 }
+
+export const setShuffle = (shuffle: any) => {
+    return {
+        type: actionTypes.SET_SHUFFLE,
+        shuffle: shuffle
+    }
+}
+
+export const setRepeat = (repeat: any) => {
+    return {
+        type: actionTypes.SET_REPEAT,
+        repeat: repeat,
+    }
+}
+export const setVolume = (volume: number | number[]) => {
+    return {
+        type: actionTypes.SET_VOLUME,
+        volume: volume,
+    }
+}
+
