@@ -20,7 +20,7 @@ const Footer: React.FC<FooterProps> = () => {
                 <img className="footer__albumLogo" src="" alt=""/>
                 
                 <div className="footer__songInfo">
-                    <h4>Yeah</h4>
+                    <h4>Yeah!</h4>
                     <p>Usher</p>
                 </div>
             

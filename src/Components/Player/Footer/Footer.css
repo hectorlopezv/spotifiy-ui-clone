@@ -55,6 +55,8 @@
 
 .footer__songInfo > p {
     padding: 0;
+    font-size: 10px;
+    font-weight: 100;
 }
 .footer__songInfo { 
     font-size: 12px;
@@ -66,4 +68,8 @@
 .footer__icon:hover, .footer__green:hover {
     transition: transform 0.2s ease-in-out;
     transform: scale(1.2);
+}
+
+.footer__right * .MuiSlider-root{
+    color: green;
 }
