@@ -11,6 +11,7 @@ import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 import { Grid, Slider } from "@material-ui/core";
 import { useDispatch, useSelector } from 'react-redux';
 import { setItem, setPlaying } from '../../../Store/actions/player';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 export interface FooterProps {
     spotify: any;
 }
@@ -20,18 +21,19 @@ const Footer: React.FC<FooterProps> = ({spotify}) => {
     
     //variables
     const playing = useSelector((stateCurrent : any)=> stateCurrent.App.playing);
-    
+    const item = useSelector((stateCurrent: any) => stateCurrent.App.item);
+
     //dispatches
-    const set_Playing = (playing: boolean) => dispatch(setPlaying(!playing));
+    const set_Playing = (playing: boolean) => dispatch(setPlaying(playing));
     const set_item = (item: any) => dispatch(setItem(item));
     //handlers
     const pauseHandler = () => {
-        if(playing){
-            spotify.pause();
-            set_Playing(true);
-        } else {
-            spotify.play();
+        if(playing){  
+            spotify?.pause();
             set_Playing(false);
+        } else {
+            spotify?.play();
+            set_Playing(true);
         }
     }
 
@@ -48,12 +50,15 @@ const Footer: React.FC<FooterProps> = ({spotify}) => {
     return (  
         <div className="footer">
             <div className="footer__left">    
-                <img className="footer__albumLogo" src="" alt=""/>
+                <img className="footer__albumLogo"  src={item?.album?.images[0]?.url}
+                    alt={item?.name}/>
                 
                 <div className="footer__songInfo">
-                    <h4>Yeah!</h4>
-                    <p>Usher</p>
+                    <h4>{item?.name}</h4>
+                    <p>{item?.artists?.map((artist: any) => artist.name).join(", ")}</p>
                 </div>
+
+                <FavoriteBorderIcon />
             
             </div>
             

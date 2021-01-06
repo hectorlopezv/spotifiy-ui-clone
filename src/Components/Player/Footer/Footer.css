@@ -4,7 +4,7 @@
     justify-content: space-between;
     bottom: 0;
     left:0;
-    height: 65px;
+    height: 80px;
     width: 100%;
     padding: 20px;
     background-color: #282828;
@@ -21,7 +21,7 @@
 }
 
 .footer__right{
-    flex: 0.3;
+    flex: 0.2;
     display: flex;
     color: white;
     align-items: center;
@@ -30,7 +30,7 @@
 }
 
 .footer__left {
-    flex: 0.3;
+    flex: 0.4;
     display: flex;
     align-items: center;
     color: white;
@@ -39,7 +39,7 @@
 }
 
 .footer__albumLogo {
-    height: 30px;
+    height: 59px;
     width: 60px;
     margin-right: 20px;
     object-fit: contain;
@@ -50,7 +50,7 @@
 }
 
 .footer__songInfo > h4 {
-    margin-bottom: -1px;
+    margin-bottom: 4px;
 }
 
 .footer__songInfo > p {
