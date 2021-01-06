@@ -16,7 +16,7 @@ const Player: React.FC<PlayerProps> = ({spotify}) => {
                 <SideBar />
                 <Body spotify={spotify}/>
             </div>
-            <Footer />
+            <Footer spotify={spotify}/>
         </div>
     );
 }

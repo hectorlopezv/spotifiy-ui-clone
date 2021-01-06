@@ -36,7 +36,7 @@ const Body: React.FC<BodyProps> = ({spotify}) => {
                 </div>
                 {/* Lists of songs*/}
                 {weekly?.tracks.items.map((track_item: any) => {
-                    return <SongRow track={track_item.track}/>
+                    return <SongRow key={track_item.track.id} track={track_item.track}/>
                 })}
 
 

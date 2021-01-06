@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './Footer.css';
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
@@ -9,11 +9,42 @@ import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 import { Grid, Slider } from "@material-ui/core";
+import { useDispatch, useSelector } from 'react-redux';
+import { setItem, setPlaying } from '../../../Store/actions/player';
 export interface FooterProps {
-    
+    spotify: any;
 }
  
-const Footer: React.FC<FooterProps> = () => {
+const Footer: React.FC<FooterProps> = ({spotify}) => {
+    const dispatch = useDispatch();
+    
+    //variables
+    const playing = useSelector((stateCurrent : any)=> stateCurrent.App.playing);
+    
+    //dispatches
+    const set_Playing = (playing: boolean) => dispatch(setPlaying(!playing));
+    const set_item = (item: any) => dispatch(setItem(item));
+    //handlers
+    const pauseHandler = () => {
+        if(playing){
+            spotify.pause();
+            set_Playing(true);
+        } else {
+            spotify.play();
+            set_Playing(false);
+        }
+    }
+
+    //Listener, when spotify changes update info of object, of the Spotify desktop app or web app
+    useEffect(() => {
+        spotify.getMyCurrentPlaybackState().then((new_info: any) => {
+            console.log('la new info', new_info);
+            set_Playing(new_info.is_playing);
+            set_item(new_info.item);
+        });
+    }, [spotify]);
+
+
     return (  
         <div className="footer">
             <div className="footer__left">    
@@ -27,15 +58,26 @@ const Footer: React.FC<FooterProps> = () => {
             </div>
             
             <div className="footer__center">
-                <ShuffleIcon className="footer__green" />
-                <SkipPreviousIcon  className="footer__icon" />
-                <PauseCircleOutlineIcon fontSize="large" className="footer__icon"/>
-                <PlayCircleOutlineIcon fontSize="large" className="footer__icon"/>
-                <SkipNextIcon  className="footer__icon" />
-                <RepeatIcon className="footer__green" />
-            
-            </div>
-            
+        <ShuffleIcon className="footer__green" />
+        <SkipPreviousIcon onClick={() => {}} className="footer__icon" />
+        {playing ? (
+          <PauseCircleOutlineIcon
+            onClick={pauseHandler}
+            fontSize="large"
+            className="footer__icon"
+          />
+        ) : (
+          <PlayCircleOutlineIcon
+            onClick={pauseHandler}
+            fontSize="large"
+            className="footer__icon"
+          />
+        )}
+        <SkipNextIcon onClick={() => {}} className="footer__icon" />
+        <RepeatIcon className="footer__green" />
+      </div>
+
+
             <div className="footer__right">
                 <Grid container spacing={2}>
                     <Grid item>

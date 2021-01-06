@@ -28,7 +28,6 @@ const App: React.FC<AppProps> = () => {
       if (_token) {
         set_token(_token);//setting the token
         spotify.setAccessToken(_token);//set token in the class
-        
         spotify.getMe()//get info from user
         .then((user: any) => {
           set_user(user);//save user in the store
@@ -47,6 +46,12 @@ const App: React.FC<AppProps> = () => {
           set_discover_weekly(response);
         });
 
+        spotify.getMyTopArtists().then((response: any) =>
+        dispatch({
+          type: "SET_TOP_ARTISTS",
+          top_artists: response,
+        })
+      );
       }
 
 

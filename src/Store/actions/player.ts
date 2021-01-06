@@ -28,3 +28,24 @@ export const setDiscoverWeekly = (weekly_playlists: any) =>{
         discover_weekly: _.cloneDeep(weekly_playlists)
     }
 }
+
+export const setTopArtist = (top_artists: any) =>{
+    return {
+        type: actionTypes.SET_TOP_ARTIST, 
+        top_artists: _.cloneDeep(top_artists)
+    }
+}
+
+export const setPlaying = (playing: boolean) => {
+    return {
+        type: actionTypes.SET_PLAYING,
+        playing: playing,
+    }
+}
+
+export const setItem = (item: any) => {
+    return {
+        type: actionTypes.SET_ITEM,
+        item: _.cloneDeep(item)
+    }
+}
