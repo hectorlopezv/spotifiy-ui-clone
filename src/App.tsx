@@ -27,7 +27,8 @@ const App: React.FC<AppProps> = () => {
     
       if (_token) {
         set_token(_token);//setting the token
-        spotify.setAccessToken(_token);//set token in the class
+        console.log('el token', _token);
+        spotify.setAccessToken(_token.trim());//set token in the class
         spotify.getMe()//get info from user
         .then((user: any) => {
           set_user(user);//save user in the store
