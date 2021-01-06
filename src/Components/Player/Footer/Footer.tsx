@@ -15,7 +15,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 export interface FooterProps {
     spotify: any;
 }
- 
+let change = false;
 const Footer: React.FC<FooterProps> = ({spotify}) => {
     const dispatch = useDispatch();
     
@@ -37,6 +37,28 @@ const Footer: React.FC<FooterProps> = ({spotify}) => {
         }
     }
 
+    const skipPreviousHandler = async () => {
+        await spotify.skipToPrevious();
+        const _ = await spotify.getMyCurrentPlaybackState();
+        const response = await spotify.getMyCurrentPlaybackState();
+        console.log('el skip to previous', response);
+        set_Playing(response.is_playing);
+        set_item(response.item);
+    }
+
+    const skipNextHandler = async () => {
+        await spotify.skipToNext();
+        const _ = await spotify.getMyCurrentPlaybackState();
+        const response = await spotify.getMyCurrentPlaybackState();
+        console.log('el skip to Next', response);
+        set_Playing(response.is_playing);
+        set_item(response.item);
+        
+
+
+    }
+
+
     //Listener, when spotify changes update info of object, of the Spotify desktop app or web app
     useEffect(() => {
         spotify.getMyCurrentPlaybackState().then((new_info: any) => {
@@ -44,8 +66,8 @@ const Footer: React.FC<FooterProps> = ({spotify}) => {
             set_Playing(new_info.is_playing);
             set_item(new_info.item);
         });
-        setInterval(function(){ set_Playing(playing)},30000);
-    }, [spotify, playing]);
+        setInterval(function(){ change = !change;},30000);
+    }, [spotify, change]);
 
 
     return (  
@@ -69,7 +91,7 @@ const Footer: React.FC<FooterProps> = ({spotify}) => {
             
             <div className="footer__center">
         <ShuffleIcon className="footer__green" />
-        <SkipPreviousIcon onClick={() => {}} className="footer__icon" />
+        <SkipPreviousIcon onClick={skipPreviousHandler} className="footer__icon" />
         {playing ? (
           <PauseCircleOutlineIcon
             onClick={pauseHandler}
@@ -83,7 +105,7 @@ const Footer: React.FC<FooterProps> = ({spotify}) => {
             className="footer__icon"
           />
         )}
-        <SkipNextIcon onClick={() => {}} className="footer__icon" />
+        <SkipNextIcon onClick={skipNextHandler} className="footer__icon" />
         <RepeatIcon className="footer__green" />
       </div>
 
