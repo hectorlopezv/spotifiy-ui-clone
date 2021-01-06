@@ -44,7 +44,8 @@ const Footer: React.FC<FooterProps> = ({spotify}) => {
             set_Playing(new_info.is_playing);
             set_item(new_info.item);
         });
-    }, [spotify]);
+        setInterval(function(){ set_Playing(playing)},30000);
+    }, [spotify, playing]);
 
 
     return (  
@@ -54,11 +55,15 @@ const Footer: React.FC<FooterProps> = ({spotify}) => {
                     alt={item?.name}/>
                 
                 <div className="footer__songInfo">
-                    <h4>{item?.name}</h4>
+                    
+                    <div className="footer__like">
+                        <h4>{item?.name}</h4>
+                        <FavoriteBorderIcon />
+                    </div>
                     <p>{item?.artists?.map((artist: any) => artist.name).join(", ")}</p>
                 </div>
 
-                <FavoriteBorderIcon />
+                
             
             </div>
             

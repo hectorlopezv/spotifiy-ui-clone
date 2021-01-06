@@ -73,3 +73,16 @@
 .footer__right * .MuiSlider-root{
     color: green;
 }
+
+.footer__like{
+    display: flex;
+    align-items: flex-start;
+}
+.footer__like .MuiSvgIcon-root:hover {
+    transition: transform 0.2s ease-in-out;
+    transform: scale(1.05);
+}
+
+.footer__like > h4 {
+    margin-right: 7px;
+}
