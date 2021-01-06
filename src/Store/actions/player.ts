@@ -21,3 +21,10 @@ export const setPlaylists = (playlists: any) =>{
         playlists: _.cloneDeep(playlists)
     }
 }
+
+export const setDiscoverWeekly = (weekly_playlists: any) =>{
+    return {
+        type: actionTypes.SET_DISCOVER_WEEKLY, 
+        discover_weekly: _.cloneDeep(weekly_playlists)
+    }
+}

@@ -5,7 +5,7 @@ import Player from './Components/Player/Player';
 import {parsed_token} from './lib/spotify';
 import SpotifyWebApi from 'spotify-web-api-js';
 import {useSelector, useDispatch} from 'react-redux';
-import {setPlaylists, setToken, setUser} from './Store/actions/player';
+import {setPlaylists, setToken, setUser, setDiscoverWeekly} from './Store/actions/player';
 
 export interface AppProps {
   
@@ -18,7 +18,7 @@ const App: React.FC<AppProps> = () => {
   const set_user = (user: any) => dispatch(setUser(user));
   const set_token = (token: any) => dispatch(setToken(token));
   const set_playlist = (playlist: any) => dispatch(setPlaylists(playlist));
-
+  const set_discover_weekly = (discover_weekly: any) => dispatch(setDiscoverWeekly(discover_weekly));
   const token = useSelector((stateCurrent: any) => stateCurrent.App.token);
 
   useEffect(() => {
@@ -41,6 +41,11 @@ const App: React.FC<AppProps> = () => {
           set_playlist(playlists);
         })
         .catch((error: any)=> console.log(error));
+        
+        spotify.getPlaylist("37i9dQZEVXcQ9COmYvdajy")
+        .then((response: any) => {
+          set_discover_weekly(response);
+        });
 
       }
 
