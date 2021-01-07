@@ -13,7 +13,7 @@ const Player: React.FC<PlayerProps> = ({spotify}) => {
     return (  
         <div className="player">
             <div className="player__body">
-                <SideBar />
+                <SideBar spotify={spotify}/>
                 <Body spotify={spotify}/>
             </div>
             <Footer spotify={spotify}/>

@@ -27,7 +27,6 @@ const App: React.FC<AppProps> = () => {
     
       if (_token) {
         set_token(_token);//setting the token
-        console.log('el token', _token);
         spotify.setAccessToken(_token.trim());//set token in the class
         spotify.getMe()//get info from user
         .then((user: any) => {
@@ -37,7 +36,6 @@ const App: React.FC<AppProps> = () => {
 
         spotify.getUserPlaylists()
         .then((playlists: any)=> {
-          console.log('playlists', playlists);
           set_playlist(playlists);
         })
         .catch((error: any)=> console.log(error));

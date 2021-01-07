@@ -13,7 +13,7 @@ export interface BodyProps {
  
 const Body: React.FC<BodyProps> = ({spotify}) => {
     const weekly = useSelector((stateCurrent: any) => stateCurrent.App.discover_weekly);
-
+    
     return (  
         <div className="body">
             <Header spotify={spotify}/>
