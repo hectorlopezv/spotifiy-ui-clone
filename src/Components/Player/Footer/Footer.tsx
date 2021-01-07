@@ -49,7 +49,7 @@ const Footer: React.FC<FooterProps> = ({spotify}) => {
 
     const shuffleHandler = async () => {
         const _ = await spotify.getMyCurrentPlaybackState();
-        console.log('shuffle', _);
+        //console.log('shuffle', _);
         spotify.setShuffle(!_.shuffle_state);
         set_shuffle(!_.shuffle_state);
     }
@@ -94,7 +94,7 @@ const Footer: React.FC<FooterProps> = ({spotify}) => {
     //Listener, when spotify changes update info of object, of the Spotify desktop app or web app
     useEffect(() => {
         spotify.getMyCurrentPlaybackState().then((new_info: any) => {
-            console.log('la new info', new_info);
+            //console.log('la new info', new_info);
             set_Playing(new_info.is_playing);
             set_item(new_info.item);
         });

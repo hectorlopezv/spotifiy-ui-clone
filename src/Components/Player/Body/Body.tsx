@@ -27,11 +27,11 @@ const Body: React.FC<BodyProps> = ({spotify}) => {
     const setCurrentHandler = async () => {
         const _ = await spotify.getMyCurrentPlaybackState();
         const response = await spotify.getMyCurrentPlaybackState();
-        console.log(response, response.context.href.slice(37));
+        //console.log(response, response.context.href.slice(37));
        // set_discover_weekly();
        spotify.getPlaylist( response.context.href.slice(37))
        .then((response: any) => {
-           console.log('este es el playlist', response);
+           //console.log('este es el playlist', response);
          set_discover_weekly(response);
        });
     }
@@ -45,7 +45,7 @@ const Body: React.FC<BodyProps> = ({spotify}) => {
         set_Playing(response.is_playing);
         set_item(response.item);
     }
-    
+
     useEffect(() => {
         setCurrentHandler();
     }, [])

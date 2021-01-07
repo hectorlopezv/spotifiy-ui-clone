@@ -2,7 +2,7 @@
 import queryString from 'query-string';
 
 export const auth_route = "https://accounts.spotify.com/authorize";
-const redirectUri = "http://localhost:3000";
+const redirectUri = "https://spotifi-ui-clone.web.app";
 const client_id = "b0f71a8a0a8c4efd808b05edb9074ef3";
 const scopes = [
     "user-read-currently-playing",
