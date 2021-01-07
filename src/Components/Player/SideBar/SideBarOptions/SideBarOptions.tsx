@@ -23,9 +23,6 @@ const SideBarOptions: React.FC<SideBarOptionsProps> = ({title, Icon, playlist, s
     
     //handler
     const playlistHandler = () => {
-        console.log('playlist handler', playlist);
-        
-
         //change weekly to playlist , //when pressing home use weekly again.
         if(playlistCode && spotify){
             spotify.getPlaylist("37i9dQZEVXcQ9COmYvdajy")
